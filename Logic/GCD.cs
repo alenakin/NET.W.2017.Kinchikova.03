@@ -51,23 +51,55 @@ namespace Logic
         #endregion
 
         #region Overloadiongs for EuclideanGCD
+
+        /// <summary>
+        /// Calculates GCD using Euclidean algorithm
+        /// </summary>
+        /// <param name="a">First number</param>
+        /// <param name="b">Second number</param>
+        /// <exception cref="ArgumentException"></exception>
+        /// <returns>GCD of a and b</returns>
         public static int EuclideanGCD(int a, int b)
         {
             return EuclideanGCD(out _, a, b);
         }
 
+        /// <summary>
+        /// Calculates GCD using Euclidean algorithm
+        /// </summary>
+        /// <param name="a">First number</param>
+        /// <param name="b">Second number</param>
+        /// <param name="c">Third param</param>
+        /// <param name="time">Time spent on calculating</param>
+        /// <exception cref="ArgumentException"></exception>
+        /// <returns>GCD of a, b and c</returns>
         public static int EuclideanGCD(out long time, int a, int b, int c)
         {
             int gcd = EuclideanGCD(a, b);
             return EuclideanGCD(out time, gcd, c);
         }
 
+        /// <summary>
+        /// Calculates GCD using Euclidean algorithm
+        /// </summary>
+        /// <param name="a">First number</param>
+        /// <param name="b">Second number</param>
+        /// <param name="c">Third param</param>
+        /// <exception cref="ArgumentException"></exception>
+        /// <returns>GCD of a, b and c</returns>
         public static int EuclideanGCD(int a, int b, int c)
         {
             int gcd = EuclideanGCD(a, b);
             return EuclideanGCD(gcd, c);
         }
 
+        /// <summary>
+        /// Calculates GCD using Euclidean algorithm
+        /// </summary>
+        /// <param name="time">Time spent on calculating</param>
+        /// <param name="numbers">Numbers for which calculate gcd</param>
+        /// <exception cref="ArgumentException"></exception>
+        /// <returns>GCD of numbers</returns>
         public static int EuclideanGCD(out long time, params int[] numbers)
         {
             time = 0;
@@ -82,6 +114,12 @@ namespace Logic
             return gcd;
         }
 
+        /// <summary>
+        /// Calculates GCD using Euclidean algorithm
+        /// </summary>
+        /// <param name="numbers">Numbers for which calculate gcd</param>
+        /// <exception cref="ArgumentException"></exception>
+        /// <returns>GCD of numbers</returns>
         public static int EuclideanGCD(params int[] numbers)
         {
             return EuclideanGCD(out _, numbers);
@@ -140,24 +178,55 @@ namespace Logic
         #endregion
 
         #region Overloading for BinaryEuclideanGCD
+
+        /// <summary>
+        /// Calculates GCD using bunary Euclidean algorithm
+        /// </summary>
+        /// <param name="a">First number</param>
+        /// <param name="b">Second number</param>
+        /// <exception cref="ArgumentException"></exception>
+        /// <returns>GCD of a and b</returns>
         public static int BinaryEuclideanGCD (int a, int b)
         {
             return BinaryEuclideanGCD(out _, a, b);
         }
 
-
+        /// <summary>
+        /// Calculates GCD using binary Euclidean algorithm
+        /// </summary>
+        /// <param name="a">First number</param>
+        /// <param name="b">Second number</param>
+        /// <param name="c">Third param</param>
+        /// <param name="time">Time spent on calculating</param>
+        /// <exception cref="ArgumentException"></exception>
+        /// <returns>GCD of a, b and c</returns>
         public static int BinaryEuclideanGCD(out long time, int a, int b, int c)
         {
             int gcd = BinaryEuclideanGCD(a, b);
             return BinaryEuclideanGCD(out time, gcd, c);
         }
 
+        /// <summary>
+        /// Calculates GCD using binary Euclidean algorithm
+        /// </summary>
+        /// <param name="a">First number</param>
+        /// <param name="b">Second number</param>
+        /// <param name="c">Third param</param>
+        /// <exception cref="ArgumentException"></exception>
+        /// <returns>GCD of a, b and c</returns>
         public static int BinaryEuclideanGCD(int a, int b, int c)
         {
             int gcd = BinaryEuclideanGCD(a, b);
             return BinaryEuclideanGCD(gcd, c);
         }
 
+        /// <summary>
+        /// Calculates GCD using binary Euclidean algorithm
+        /// </summary>
+        /// <param name="time">Time spent on calculating</param>
+        /// <param name="numbers">Numbers for which calculate gcd</param>
+        /// <exception cref="ArgumentException"></exception>
+        /// <returns>GCD of numbers</returns>
         public static int BinaryEuclideanGCD(out long time, params int[] numbers)
         {
             time = 0;
@@ -172,6 +241,12 @@ namespace Logic
             return gcd;
         }
 
+        /// <summary>
+        /// Calculates GCD using binary Euclidean algorithm
+        /// </summary>
+        /// <param name="numbers">Numbers for which calculate gcd</param>
+        /// <exception cref="ArgumentException"></exception>
+        /// <returns>GCD of numbers</returns>
         public static int BinaryEuclideanGCD(params int[] numbers)
         {
             return BinaryEuclideanGCD(out _, numbers);

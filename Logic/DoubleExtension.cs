@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.InteropServices;
 
 namespace Logic
 {
@@ -12,25 +13,49 @@ namespace Logic
     /// </summary>
     public static class DoubleExtension
     {
-        private const int mantissa = 64;
-        private const int exp = 11;
+        private const int numOfBits = 64;
 
         /// <summary>
         /// Represent the string with binary representation of double number
         /// </summary>
-        /// <param name="number"></param>
+        /// <param name="number">Number</param>
         /// <returns>String with binary representation</returns>
         public static string ToBinaryString(this double number)
         {
-            var bits = new BitArray(BitConverter.GetBytes(number));
-            char[] resChar = new char[bits.Length];
-            for (int i = 0; i < resChar.Length; i++)
-                if (bits[i])
-                    resChar[i] = '1';
-                else
-                    resChar[i] = '0';
+            Union num = new Union();
+            num.DoubleValue = number;
+            long lNum = num.LongValue;
+            string result = "";
+            for (int i = 0; i < numOfBits; i++)
+            {
+                result += lNum & 1;
+                lNum >>= 1;
+            }
+            char[] resChar = result.ToArray();
             Array.Reverse(resChar);
             return new string(resChar);
+        }
+
+        [StructLayout(LayoutKind.Explicit)]
+        private class Union
+        {
+            [FieldOffset(0)]
+            private double doubleValue;
+
+            [FieldOffset(0)]
+            private long longValue;
+
+            public double DoubleValue
+            {
+                get => doubleValue;
+                set => doubleValue = value;
+            }
+
+            public long LongValue
+            {
+                get => longValue;
+                set => longValue = value;
+            }
         }
     }
 }
